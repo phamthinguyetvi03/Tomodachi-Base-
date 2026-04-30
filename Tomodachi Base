@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOYNEXTDOOR RIGHT HERE!</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #87CEEB, #4da6ff); /* blue sky */
+      color: white;
+      -webkit-text-stroke: 1px black; /* viền đen */
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 40px;
+    }
+
+    h2 {
+      margin-left: 20px;
+      font-size: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal iframe {
+      width: 80%;
+      height: 450px;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      cursor: pointer;
+      color: white;
+      -webkit-text-stroke: 1px black;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>BOYNEXTDOOR RIGHT HERE!</h1>
+
+<h2>Tomodachi Base</h2>
+
+<div class="grid">
+
+  <!-- VIDEO 1 -->
+  <div class="card" onclick="openVideo('dazyKpOjXyw')">
+    <img src="thumb1.jpg">
+    <div class="title">Episode 1</div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="card" onclick="openVideo('dazyKpOjXyw')">
+    <img src="thumb2.jpg">
+    <div class="title">Episode 2</div>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="modal" id="modal">
+  <span class="close" onclick="closeVideo()">×</span>
+  <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script>
+  function openVideo(id) {
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("videoFrame").src =
+      "https://www.youtube.com/embed/" + id;
+  }
+
+  function closeVideo() {
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("videoFrame").src = "";
+  }
+</script>
+
+</body>
+</html>
